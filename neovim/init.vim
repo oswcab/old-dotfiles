@@ -85,7 +85,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Avoid wrong syntax coloring on .template files
 autocmd BufNewFile,BufRead *.template set syntax=off
 
-" Use absolute numbers when inserting or the wibdows
+" Avoid expanding tabs when opening go files
+autocmd BufNewFile,BufRead *.go set noexpandtab
+
+" Use absolute numbers when inserting or when the windows
 " lose focus. Otherwise, use relative hybrid numbers.
 :augroup numbertoggle
 :  autocmd!
@@ -101,7 +104,27 @@ noremap <Right> <Nop>
 
 " Enables Esc to get out of terminal mode
 if has ('nvim')
+  " Terminal mode:
   tnoremap <Esc> <C-\><C-n>
   tnoremap <C-v> <Esc> <Esc>
+  tnoremap <C-h> <c-\><c-n><c-w>h
+  tnoremap <C-j> <c-\><c-n><c-w>j
+  tnoremap <C-k> <c-\><c-n><c-w>k
+  tnoremap <C-l> <c-\><c-n><c-w>l
+  " Insert mode:
+  inoremap <C-h> <Esc><C-w>h
+  inoremap <C-j> <Esc><C-w>j
+  inoremap <C-k> <Esc><C-w>k
+  inoremap <C-l> <Esc><C-w>l
+  " Visual mode:
+  vnoremap <C-h> <Esc><c-w>h
+  vnoremap <C-j> <Esc><c-w>j
+  vnoremap <C-k> <Esc><c-w>k
+  vnoremap <C-l> <Esc><c-w>l
 endif
 
+" Simplify moving between open windows
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
