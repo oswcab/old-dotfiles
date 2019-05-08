@@ -30,8 +30,9 @@ if command -v bat; then
 fi
 
 ips() {
-  ip a | awk '/inet / {printf(\"%-16s  %s \n\", \$NF, \$2)}'
+  ip a | awk '/\<inet\>/ {if($NF ~ "lo") {next}; printf("%-16s  %s\n", $NF, $2)}' | sort
 }
+
 
 kill-app() {
   PID=$(pgrep -f "$1")
