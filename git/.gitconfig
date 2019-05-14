@@ -25,12 +25,15 @@
 [diff]
   tool = vimdiff
 [alias]
+  a = add
+  all = add .
   br = branch
   ca = commit --amend
   cm = commit
   co = checkout
   cp = cherry-pick
   df = diff
+  fe = fetch
   h = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --abbrev-commit --date=iso8601
   hh = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --abbrev-commit --date=iso8601 --name-only
   l = log
@@ -40,6 +43,8 @@
   pl = pull
   ps = push
   rb = rebase
+  rh = reset --hard
+  rs = reset
   rt = remote
   sh = stash
   st = status
