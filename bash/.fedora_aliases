@@ -1,0 +1,28 @@
+#!/bin/bash
+
+alias vm="ssh centos@192.168.200.71"
+
+check-boxes() {
+  sudo "${HOME}/klm/src/box/box.sh" list
+}
+
+clean-boxes() {
+  sudo "${HOME}/klm/src/box/box.sh" clean
+}
+
+docker-clean() {
+  exec docker rmi -f $(docker images -q)
+}
+
+docker-ip() {
+  exec docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$@"
+}
+
+docker-pid() {
+  exec docker inspect --format '{{ .State.Pid }}' "$@"
+}
+
+docker-prune() {
+  exec yes | docker system prune
+}
+

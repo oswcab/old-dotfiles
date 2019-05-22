@@ -72,6 +72,14 @@ docker-prune() {
   exec yes | docker system prune
 }
 
+cp-tts() {
+  local file dest user
+  file=$1
+  dest=${2:-controller-0}
+  user=${3:-vagrant}
+  scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -B \
+      "${file}" "${user}@${dest}:/home/${user}"
+}
 #if grep -q mint /etc/os-release && [[ -f "{BASE_PATH}/.mint_aliases" ]]; then
 #  source "${BASE_PATH}/.mint_aliases"
 #fi
