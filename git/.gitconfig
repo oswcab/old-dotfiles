@@ -27,22 +27,33 @@
 [alias]
   a = add
   all = add .
+  bl = blame
   br = branch
+  brd = branch -D
+  brm = branch -m
   ca = commit --amend
   cm = commit
+  cne = commit --amend --no-edit
   co = checkout
+  cof = checkout --force
   cp = cherry-pick
+  cpa = cherry-pick --abort
+  cpc = cherry-pick --continue
   df = diff
-  fe = fetch
+  ft = fetch
   h = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --abbrev-commit --date=iso8601
   hh = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --abbrev-commit --date=iso8601 --name-only
   l = log
   lod = log --graph --decorate
   lol = log --oneline
-  ne = commit --amend --no-edit
   pl = pull
   ps = push
+  psf = push --force
+  psu = push --set-upstream
   rb = rebase
+  rba = rebase --abort
+  rbc = rebase --continue
+  rbi = rebase -i
   rh = reset --hard
   rs = reset
   rt = remote
