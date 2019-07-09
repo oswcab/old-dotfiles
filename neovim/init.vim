@@ -62,6 +62,9 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Systemd syntax
 Plug 'Matt-Deacalion/vim-systemd-syntax'
 
+" fuzzyfinder
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
 call plug#end()
 
 let g:syntastic_sh_checkers = ['shellcheck']
@@ -76,6 +79,7 @@ nnoremap \n :NERDTreeToggle<CR>
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeShowHidden=1
+let NERDTreeWinSize=50
 
 " Close NERDTree when a file is opened
 "let NERDTreeQuitOnOpen = 1 " Not sure is a good idea now.

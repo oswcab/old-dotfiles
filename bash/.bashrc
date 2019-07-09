@@ -115,3 +115,5 @@ fi
 
 MANPATH=$MANPATH:$HOME/share/man
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
