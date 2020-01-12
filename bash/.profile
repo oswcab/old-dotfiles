@@ -18,11 +18,12 @@ fi
 
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/klm
-export WORKSPACE=$HOME/klm/src/repos
+export GOBIN=$GOPATH/bin
+export WORKSPACE=$HOME/klm/src/
 export GITLAB_PRIVATE_TOKEN=ZEaEw4R8GQ7pLYLTBHJA
 export VAGRANT_HOME=$HOME/.vagrant.d
 
-PATH=$PATH:$HOME/.local/bin:$HOME/klm/bin:$GOROOT/bin:$GOPATH/bin:/usr/local/git/bin
+PATH=$PATH:$HOME/.local/bin:$HOME/bin:$GOROOT/bin:$GOBIN:/usr/local/git/bin
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -31,3 +32,4 @@ fi
 
 export PATH
 
+export VSSH_USERNAME=hoc

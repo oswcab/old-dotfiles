@@ -1,6 +1,7 @@
 #!/bin/bash -x
 
 #readonly BASE_PATH="$(dirname "$(readlink -f "$0")")"
+SCP_OPT="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -B"
 
 if [[ -x /usr/bin/dircolors ]]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -30,46 +31,40 @@ if command -v bat; then
 fi
 
 ips() {
-  ip a | awk '/\<inet\>/ {if($NF ~ "lo") {next}; printf("%-16s  %s\n", $NF, $2)}' | sort
+  ip -4 a | awk '/inet/ {if($NF ~ "lo") {next}; printf("%-16s  %s\n", $NF, $2)}' | sort
 }
-
 
 kill-app() {
   PID=$(pgrep -f "$1")
   kill -9 "${PID}"
 }
 
-#set -x
-#if grep -q fedora /etc/os-release; then
-#  if [[ -f "${BASE_PATH}/.fedora_aliases" ]]; then
-#    source "${BASE_PATH}/.fedora_aliases"
-#  fi
-#fi
-
 alias vm="ssh centos@192.168.200.71"
+alias permission="sudo chown -R ${USER}:${USER} ${HOME}/klm"
 
+box_bin="${HOME}/klm/src/others/box/box.sh"
 clean-boxes() {
-  sudo "${HOME}/klm/src/box/box.sh" clean
+  sudo "${box_bin}" clean
 }
 
 list-boxes() {
-  sudo "${HOME}/klm/src/box/box.sh" list
+  sudo "${box_bin}" list
 }
 
 docker-clean() {
-  exec docker rmi -f $(docker images -q)
+  docker rmi -f "$(docker images -q)"
 }
 
 docker-ip() {
-  exec docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$@"
+  docker inspect --format '{{ .NetworkSettings.IPAddress }}' "$@"
 }
 
 docker-pid() {
-  exec docker inspect --format '{{ .State.Pid }}' "$@"
+  docker inspect --format '{{ .State.Pid }}' "$@"
 }
 
 docker-prune() {
-  exec yes | docker system prune
+  yes | docker system prune
 }
 
 cp-tts() {
@@ -77,10 +72,6 @@ cp-tts() {
   file=$1
   dest=${2:-controller-0}
   user=${3:-vagrant}
-  scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -B \
-      "${file}" "${user}@${dest}:/home/${user}"
+  scp ${SCP_OPT} "${file}" "${user}@${dest}:/home/${user}"
 }
-#if grep -q mint /etc/os-release && [[ -f "{BASE_PATH}/.mint_aliases" ]]; then
-#  source "${BASE_PATH}/.mint_aliases"
-#fi
 
