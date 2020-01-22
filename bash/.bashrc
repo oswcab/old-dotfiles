@@ -31,11 +31,6 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color) color_prompt=yes;;
@@ -69,9 +64,9 @@ export GIT_PS1_SHOWUPSTREAM='auto'
 source "$HOME/.git-prompt.sh"
 #source $HOME/.git-completion.bash
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\e[0;96m\]$(__git_ps1 " (%s)")\[\e[0;37m\] \$\[\e[0m\] '
+    PS1='\[\e[01;32m\]\u@\h:\[\e[01;34m\]\w\[\e[0;96m\]$(__git_ps1 )\[\e[0;37m\] \$\[\e[0m\] '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1" (%s)")\$ '
+    PS1='\u@\h:\w$(__git_ps1" (%s)")\$ '
 fi
 unset color_prompt force_color_prompt
 
