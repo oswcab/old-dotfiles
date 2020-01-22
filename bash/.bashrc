@@ -52,28 +52,26 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-# Git
-export GIT_PS1_SHOWDIRTYSTATE='y'
-# export GIT_PS1_SHOWSTASHSTATE='y'
-# export GIT_PS1_SHOWUNTRACKEDFILES='y'
-export GIT_PS1_DESCRIBE_STYLE='branch'
-export GIT_PS1_SHOWUPSTREAM='auto'
-# export GIT_PS1_SHOWCOLORHINTS='yes'
+readonly USER_HOST='\[\e[01;32m\]\u@\h'
+readonly CWD='\[\e[01;96m\]\w\[\e[0m\]'
+readonly PROMPT='\[\e[0;37m\]\$\[\e[0m\] '
+git_prompt() {
+  gf=$(pretty-git-prompt)
+  if [[ "${gf}" ]]; then
+    gf="(${gf})"
+  fi
+  echo "${gf}"
+}
 
-# shellcheck source=/dev/null
-source "$HOME/.git-prompt.sh"
-#source $HOME/.git-completion.bash
-if [ "$color_prompt" = yes ]; then
-    PS1='\[\e[01;32m\]\u@\h:\[\e[01;34m\]\w\[\e[0;96m\]$(__git_ps1 )\[\e[0;37m\] \$\[\e[0m\] '
-else
-    PS1='\u@\h:\w$(__git_ps1" (%s)")\$ '
-fi
+pretty_prompt() { PS1="${USER_HOST}:${CWD} $(git_prompt) ${PROMPT}"; }
+export PROMPT_COMMAND="pretty_prompt ; $PROMPT_COMMAND"
+
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    PS1="\[\e]0;\u@\h: \w\a\]$PS1"
     ;;
 *)
     ;;
