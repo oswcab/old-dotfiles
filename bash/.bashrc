@@ -52,9 +52,9 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-readonly USER_HOST='\[\e[01;32m\]\u@\h'
-readonly CWD='\[\e[01;96m\]\w\[\e[0m\]'
-readonly PROMPT='\[\e[0;37m\]\$\[\e[0m\] '
+USER_HOST='\[\e[01;32m\]\u@\h'
+CWD='\[\e[01;96m\]\w\[\e[0m\]'
+PROMPT='\[\e[0;37m\]\$\[\e[0m\] '
 git_prompt() {
   gf=$(pretty-git-prompt)
   if [[ "${gf}" ]]; then
