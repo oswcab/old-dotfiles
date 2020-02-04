@@ -52,7 +52,8 @@ list-boxes() {
 }
 
 docker-clean() {
-  docker rmi -f "$(docker images -q)"
+  # shellcheck disable=SC2086
+  docker rmi -f $(docker images -q)
 }
 
 docker-ip() {
