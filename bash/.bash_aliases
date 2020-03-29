@@ -13,25 +13,26 @@ if [[ -x /usr/bin/dircolors ]]; then
   alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ltr='ls -ltr'
-alias ll='ls -AlhHF'
-alias la='ls -A'
-alias l='ls -CF'
+alias ll='exa -lgh --git'
+alias la='exa -lgha --git'
+alias l='exa -l --git'
+alias lw='exa -lgGha --git'
 
 #system
+if command -v bat; then
+  alias cat='bat -p'
+fi
 alias df='df -h'
 alias showalias='cat $HOME/.bash_aliases'
 alias top='htop'
 alias cleanmem='sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
 alias bigfiles="sudo du -ah / 2>/dev/null | sort -n -r | head -n 20" # TODO: Convert to function so it can receive the number as parameter.
+alias permissions="sudo chown -R ${USER}:${USER} ${HOME}/klm"
+alias vimdiff='vim -d'
 
-if command -v bat; then
-  alias cat='bat -p'
-fi
 
 ips() {
-  ip -4 a | awk '/inet/ {if($NF ~ "lo") {next}; printf("%-16s  %s\n", $NF, $2)}' | sort
+  ip -4 a | awk '/inet/ {if ($NF ~ "lo") {next}; printf("%-16s  %s\n", $NF, $2)}' | sort
 }
 
 kill-app() {
@@ -39,8 +40,6 @@ kill-app() {
   kill -9 "${PID}"
 }
 
-alias vm="ssh centos@192.168.200.71"
-alias permission="sudo chown -R ${USER}:${USER} ${HOME}/klm"
 
 box_bin="${HOME}/klm/src/others/box/box.sh"
 clean-boxes() {

@@ -22,8 +22,9 @@ export GOBIN=$GOPATH/bin
 export WORKSPACE=$HOME/klm/src/
 export GITLAB_PRIVATE_TOKEN=ZEaEw4R8GQ7pLYLTBHJA
 export VAGRANT_HOME=$HOME/.vagrant.d
+export KUBECONFIG=$HOME/klm/src/ocp-playground/ignition/auth/kubeconfig
 
-PATH=$PATH:$HOME/.local/bin:$HOME/bin:$GOROOT/bin:$GOBIN:/usr/local/git/bin
+PATH=$PATH:$HOME/.local/bin:$HOME/bin:$GOROOT/bin:$GOBIN:/usr/local/git/bin:$HOME/klm/src/ocp-playground/bin
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then

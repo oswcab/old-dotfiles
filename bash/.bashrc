@@ -52,20 +52,20 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-USER_HOST='\[\e[01;32m\]\u@\h'
-CWD='\[\e[01;96m\]\w\[\e[0m\]'
-PROMPT='\[\e[0;37m\]\$\[\e[0m\] '
-git_prompt() {
-  gf=$(pretty-git-prompt)
-  if [[ "${gf}" ]]; then
-    gf="(${gf})"
-  fi
-  echo "${gf}"
-}
-
-pretty_prompt() { PS1="${USER_HOST}:${CWD} $(git_prompt) ${PROMPT}"; }
-export PROMPT_COMMAND="pretty_prompt ; $PROMPT_COMMAND"
-
+#USER_HOST='\[\e[01;32m\]\u@\h'
+#CWD='\[\e[01;96m\]\w\[\e[0m\]'
+#PROMPT='\[\e[0;37m\]\$\[\e[0m\] '
+#git_prompt() {
+#  gf=$(pretty-git-prompt)
+#  if [[ "${gf}" ]]; then
+#    gf="(${gf})"
+#  fi
+#  echo "${gf}"
+#}
+#
+#pretty_prompt() { PS1="${USER_HOST}:${CWD} $(git_prompt) ${PROMPT}"; }
+#export PROMPT_COMMAND="pretty_prompt ; $PROMPT_COMMAND"
+#
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -77,6 +77,10 @@ xterm*|rxvt*)
     ;;
 esac
 
+SILVER_ICONS=nerd
+SILVER=(dir:blue:black git:green:black:yellow)
+export SILVER_SHELL=$0
+eval "$(silver init)"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -104,9 +108,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-#source /home/ehecabo/.bazel/bin/bazel-complete.bash
-
 MANPATH=$MANPATH:$HOME/share/man
 
+export EXA_COLORS="uu=36:gu=36"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
