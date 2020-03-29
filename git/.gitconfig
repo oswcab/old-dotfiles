@@ -3,7 +3,7 @@
   email = hoc@kaloom.com
   username = oswcab
 [core]
-  editor = /home/oswcab/bin/vim
+  editor = vim
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
   excludesfile = ~/.gitignore
 [color]
@@ -23,7 +23,7 @@
   changed = yellow
   untracked = red
 [diff]
-  tool = meld
+  tool = vimdiff
 [alias]
   a = add
   all = add .
@@ -58,5 +58,9 @@
   rs = reset
   rt = remote
   sh = stash
+  sbu = submodule update
+  sbuf = submodule update --force
   st = status
   sw = show
+[protocol]
+  version = 2
