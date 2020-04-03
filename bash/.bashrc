@@ -79,7 +79,7 @@ esac
 
 SILVER_ICONS=nerd
 SILVER=(dir:blue:black git:green:black:yellow)
-export SILVER_SHELL=$0
+export SILVER_SHELL=bash
 eval "$(silver init)"
 
 # Add an "alert" alias for long running commands.  Use like so:
