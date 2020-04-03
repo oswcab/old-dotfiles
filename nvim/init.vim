@@ -12,6 +12,7 @@ set showcmd                     " Show <leader key has been pressed
 set showmatch                   " Highlight matching brace
 set splitbelow                  " Open horizontal split below
 set splitright                  " Open vertical split to the right
+set termguicolors               " Enable true colors support
 set textwidth=80                " Line wrap (number of cols)
 set undolevels=1000             " Number of undo levels
 
@@ -38,8 +39,8 @@ syntax on
 "highlight Comment ctermfg=DarkGrey
 
 function! g:BuffetSetCustomColors()
-    hi! BuffetCurrentBuffer cterm=NONE ctermbg=11 ctermfg=0 guibg=#00FF00 guifg=#000000
-    hi! BuffetBuffer cterm=NONE ctermbg=0 ctermfg=2
+    hi! BuffetCurrentBuffer cterm=NONE ctermbg=11 ctermfg=0 guibg=#FFFF00 guifg=#000000
+    hi! BuffetBuffer cterm=NONE ctermbg=16 ctermfg=2 guibg=#262626 guifg=#00FFAF
 endfunction
 
 " Plugins
@@ -76,6 +77,9 @@ Plug 'bagrat/vim-buffet'
 " vim dev-icons
 Plug 'ryanoasis/vim-devicons'
 
+" fugitive - git integration
+Plug 'tpope/vim-fugitive'
+
 call plug#end()
 
 colorscheme molokai
@@ -96,6 +100,7 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeShowHidden=1
 let NERDTreeWinSize=50
+let g:NERDTreeHijackNetrw = 1
 
 " Close NERDTree when a file is opened
 "let NERDTreeQuitOnOpen = 1 " Not sure is a good idea now.
@@ -284,4 +289,10 @@ let g:buffet_tab_icon = "\uf00a"
 let g:buffet_left_trunc_icon = "\uf0a8"
 let g:buffet_right_trunc_icon = "\uf0a9"
 
+" fugitive.vim configuration
+
+" git blame
+nnoremap <Leader>gb :Gblame<CR>
+
+" Customize theme
 highlight LineNr ctermfg=grey
