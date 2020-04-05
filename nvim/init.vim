@@ -155,6 +155,9 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" Remap Esc to jk in insert mode
+inoremap jk <Esc>
+
 "== vim-go syntax hightlight ==
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
