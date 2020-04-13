@@ -61,6 +61,7 @@ Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " fuzzyfinder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " vim-go
 Plug 'fatih/vim-go'
