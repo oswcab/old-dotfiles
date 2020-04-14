@@ -1,0 +1,4 @@
+#!/bin/bash
+
+curl -s wttr.in/Montreal?format="+%c+%p+%w+%t"
+

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+local_ips=$(ip r get 1.2.3.4 | awk '{print $5" • "$7" • "$3; exit}')
+external_ip=$(curl -s 'https://api.ipify.org')
+echo "${local_ips} • ${external_ip}"
+
