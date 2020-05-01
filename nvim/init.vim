@@ -1,5 +1,6 @@
 set autoread                    " Reloads a file if changed out of vim
 set backspace=indent,eol,start  " Backspace behaviour
+set clipboard=unnamedplus       " Use the system clipboard
 set hidden
 set linebreak                   " Break lines at word (requires Wrap lines)
 set listchars=tab:▶\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
