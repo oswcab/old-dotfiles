@@ -81,6 +81,9 @@ Plug 'ryanoasis/vim-devicons'
 " fugitive - git integration
 Plug 'tpope/vim-fugitive'
 
+" better whitespace
+Plug 'ntpeters/vim-better-whitespace'
+
 call plug#end()
 
 colorscheme molokai
@@ -300,3 +303,7 @@ nnoremap <Leader>gb :Gblame<CR>
 
 " Customize theme
 highlight LineNr ctermfg=grey
+
+" Better whitespace configuration
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
