@@ -13,10 +13,14 @@ if [[ -x /usr/bin/dircolors ]]; then
   alias egrep='egrep --color=auto'
 fi
 
-alias ll='exa -lgh --git'
-alias la='exa -lgha --git'
-alias l='exa -l --git'
-alias lw='exa -lgGha --git'
+alias ll='exa -lgh'
+alias la='exa -lgha'
+alias l='exa -l'
+alias lt='ll --tree L1'
+alias ltt='ll --tree L2'
+alias lttt='ll --tree L3'
+alias ltttt='ll --tree L4'
+alias lw='exa -lgGha'
 
 #system
 if command -v bat; then
