@@ -24,10 +24,12 @@ set smartcase                   " Enable smart-case search
 
 set autoindent                  " Auto-indent new lines
 set expandtab                   " Use spaces instead of tabs
-set shiftwidth=2                " Number of auto-indent spaces
+set foldmethod=syntax
+set nofoldenable
+set shiftwidth=4                " Number of auto-indent spaces
 set smartindent                 " Enable smart-indent
 set smarttab                    " Enable smart-tabs
-set softtabstop=2               " Number of spaces per Tab
+set softtabstop=4               " Number of spaces per Tab
 
 au FileType gitcommit setlocal spell
 au FileType gitcommit setlocal textwidth=72
@@ -84,6 +86,18 @@ Plug 'tpope/vim-fugitive'
 
 " better whitespace
 Plug 'ntpeters/vim-better-whitespace'
+
+" Outline view
+Plug 'liuchengxu/vista.vim'
+
+" Gradle support
+Plug 'tfnico/vim-gradle'
+
+" tag management
+Plug 'ludovicchabant/vim-gutentags'
+
+" shellcheck
+Plug 'itspriddle/vim-shellcheck'
 
 call plug#end()
 
@@ -308,3 +322,64 @@ highlight LineNr ctermfg=grey
 " Better whitespace configuration
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
+
+" gutentags configuation
+let g:gutentags_cache_dir = expand('~/.cache/nvim/ctags/')
+
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_missing = 1
+let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_empty_buffer = 0
+
+let g:gutentags_ctags_extra_args = [
+      \ '--tag-relative=yes',
+      \ '--fields=+ailmnS',
+      \ ]
+
+let g:gutentags_ctags_exclude = [
+      \ '*.git', '*.svg', '*.hg',
+      \ '*/tests/*',
+      \ 'build',
+      \ 'dist',
+      \ '*sites/*/files/*',
+      \ 'bin',
+      \ 'node_modules',
+      \ 'bower_components',
+      \ 'cache',
+      \ 'compiled',
+      \ 'docs',
+      \ 'example',
+      \ 'bundle',
+      \ 'vendor',
+      \ '*.md',
+      \ '*-lock.json',
+      \ '*.lock',
+      \ '*bundle*.js',
+      \ '*build*.js',
+      \ '.*rc*',
+      \ '*.json',
+      \ '*.min.*',
+      \ '*.map',
+      \ '*.bak',
+      \ '*.zip',
+      \ '*.pyc',
+      \ '*.class',
+      \ '*.sln',
+      \ '*.Master',
+      \ '*.csproj',
+      \ '*.tmp',
+      \ '*.csproj.user',
+      \ '*.cache',
+      \ '*.pdb',
+      \ 'tags*',
+      \ 'cscope.*',
+      \ '*.css',
+      \ '*.less',
+      \ '*.scss',
+      \ '*.exe', '*.dll',
+      \ '*.mp3', '*.ogg', '*.flac',
+      \ '*.swp', '*.swo',
+      \ '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png',
+      \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
+      \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
+      \ ]
