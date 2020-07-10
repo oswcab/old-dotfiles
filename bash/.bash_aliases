@@ -1,7 +1,8 @@
 #!/bin/bash -x
 
 #readonly BASE_PATH="$(dirname "$(readlink -f "$0")")"
-SCP_OPT="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -B"
+#SCP_OPT="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -B"
+SCP_OPT="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no "
 
 if [[ -x /usr/bin/dircolors ]]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -32,6 +33,9 @@ alias top='htop'
 alias cleanmem='sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
 alias bigfiles="sudo du -ah / 2>/dev/null | sort -n -r | head -n 20" # TODO: Convert to function so it can receive the number as parameter.
 alias permissions="sudo chown -R ${USER}:${USER} ${HOME}/klm"
+alias scp="scp ${SCP_OPT} "
+alias ssh="TERM=screen ssh ${SCP_OPT} "
+
 alias vimdiff='vim -d'
 
 
