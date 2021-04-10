@@ -111,5 +111,15 @@ fi
 MANPATH=$MANPATH:$HOME/share/man
 
 export EXA_COLORS="uu=36:gu=36"
+export EDITOR='vim'
+export VISUAL='vim'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Set readline to vi mode
+#set -o vi
+
+# Map Ctr-L to clean the screen in readline vi insert mode
+bind -m vi-insert "C-l":clear-screen
+
+source "$HOME/.cargo/env"

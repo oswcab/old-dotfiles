@@ -34,3 +34,6 @@ fi
 export PATH
 
 export VSSH_USERNAME=hoc
+export VSSH_USER_KEY=~/.ssh/id_ed25519
+
+source "$HOME/.cargo/env"
