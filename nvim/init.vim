@@ -70,7 +70,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go'
 
 " color theme
-Plug 'fatih/molokai'
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 
 " ConquerOfCompletion plugin
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
@@ -99,9 +99,18 @@ Plug 'ludovicchabant/vim-gutentags'
 " shellcheck
 Plug 'itspriddle/vim-shellcheck'
 
+" Auto-close pairs
+Plug 'jiangmiao/auto-pairs'
+
 call plug#end()
 
-colorscheme molokai
+colorscheme material
+let g:material_theme_style = 'darker'
+let g:material_terminal_italics = 1
+let g:airline_theme = 'material'
+highlight Comment ctermfg=DarkGrey
+
+"colorscheme molokai
 let g:rehash256 = 1
 set guifont=DroidSansMono\ Nerd\ Font\ 12
 
