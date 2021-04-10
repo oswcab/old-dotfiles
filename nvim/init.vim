@@ -37,10 +37,6 @@ filetype plugin on
 match ErrorMsg '\s\+$'
 syntax on
 
-"colorscheme monokai
-"hi Normal ctermbg=none
-"highlight Comment ctermfg=DarkGrey
-
 function! g:BuffetSetCustomColors()
     hi! BuffetCurrentBuffer cterm=NONE ctermbg=11 ctermfg=0 guibg=#FFFF00 guifg=#000000
     hi! BuffetBuffer cterm=NONE ctermbg=16 ctermfg=2 guibg=#262626 guifg=#00FFAF
@@ -70,7 +66,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go'
 
 " color theme
-Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'kaicataldo/material.vim', { 'branch': 'master' }
 
 " ConquerOfCompletion plugin
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
@@ -319,6 +315,10 @@ let g:buffet_use_devicons = 1
 let g:buffet_tab_icon = "\uf00a"
 let g:buffet_left_trunc_icon = "\uf0a8"
 let g:buffet_right_trunc_icon = "\uf0a9"
+
+" Use TAB and Shift-TAB to move between buffers
+nnoremap <silent> <TAB> :bnext<CR>
+nnoremap <silent> <S-TAB> :bprevious<CR>
 
 " fugitive.vim configuration
 
