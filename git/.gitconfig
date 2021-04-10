@@ -27,8 +27,8 @@
   tool = vimdiff
   colorMoved = default
 [delta]
-  line-numbers = true
   side-by-side = true
+  line-numbers = true
 [alias]
   a = add
   all = add .
@@ -62,6 +62,7 @@
   rh = reset --hard
   rs = reset
   rt = remote
+  sf = show --pretty="" --name-only
   sh = stash
   smu = submodule update
   smuf = submodule update --force
