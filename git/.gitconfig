@@ -27,7 +27,7 @@
   tool = vimdiff
   colorMoved = default
 [delta]
-  side-by-side = true
+#  side-by-side = true
   line-numbers = true
 [alias]
   a = add
