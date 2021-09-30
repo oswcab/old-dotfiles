@@ -1,6 +1,7 @@
 #!/bin/bash
 
-local_ips=$(ip r get 1.2.3.4 | awk '{print $5" • "$7" • "$3; exit}')
-external_ip=$(curl -s 'https://api.ipify.org')
-echo "${local_ips} • ${external_ip}"
+local_ips=$(ip r get 1.2.3.4 | awk '{print $5" • "$7; exit}')
+# external_ip=$(curl -s --connection-timeout 5 'https://api.ipify.org')
+kaloom_ip=$(ip r get 10.127.3.2 | awk '{print $5" • "$7" • "$3; exit}')
+echo "${local_ips} ⚡${kaloom_ip}"
 
